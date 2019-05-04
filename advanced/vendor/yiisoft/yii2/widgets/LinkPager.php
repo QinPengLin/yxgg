@@ -133,6 +133,9 @@ class LinkPager extends Widget
      */
     public $disableCurrentPageButton = false;
 
+    public $pgek = 'ul';
+    public $pgel = 'li';
+
 
     /**
      * Initializes the pager.
@@ -220,7 +223,7 @@ class LinkPager extends Widget
         }
 
         $options = $this->options;
-        $tag = ArrayHelper::remove($options, 'tag', 'ul');
+        $tag = ArrayHelper::remove($options, 'tag', $this->pgek);
         return Html::tag($tag, implode("\n", $buttons), $options);
     }
 
@@ -237,7 +240,7 @@ class LinkPager extends Widget
     protected function renderPageButton($label, $page, $class, $disabled, $active)
     {
         $options = $this->linkContainerOptions;
-        $linkWrapTag = ArrayHelper::remove($options, 'tag', 'li');
+        $linkWrapTag = ArrayHelper::remove($options, 'tag', $this->pgel);
         Html::addCssClass($options, empty($class) ? $this->pageCssClass : $class);
 
         if ($active) {
