@@ -18,7 +18,8 @@ use yii\data\Pagination;
 class NoticeController extends SiteController
 {
 
-    public $enableCsrfValidation = false;
+    public $enableCsrfValidation = false;//关闭表单提交验证
+    public $defaultAction = 'home';//admin是默认的方法名
 
     public function actionIndex(){
         if(Yii::$app->request->isGet) {
