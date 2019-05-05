@@ -64,9 +64,11 @@ class NoticeController extends SiteController
                 $up='';
                 foreach ($list as $k=>$v){
                     if($v['id']>$data->id){
+                        $v['id']=PublicMethods::encryption($v['id']);
                         $next=$v;
                     }
                     if ($v['id']<$data->id){
+                        $v['id']=PublicMethods::encryption($v['id']);
                         $up=$v;
                     }
                 }
