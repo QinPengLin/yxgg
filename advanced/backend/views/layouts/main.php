@@ -23,15 +23,6 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="/yxgg/css/base.css" rel="stylesheet">
     <link href="/yxgg/css/m.css" rel="stylesheet">
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?a121a80d02070c80005e5c18ca607f2c";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
     <script src="/yxgg/js/jquery-1.8.3.min.js" ></script>
     <script src="/yxgg/js/comm.js"></script>
     <!--[if lt IE 9]>
@@ -106,6 +97,15 @@ AppAsset::register($this);
     <a href="#">
         <div class="top"></div>
     </a> </footer>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a121a80d02070c80005e5c18ca607f2c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 </body>
 </html>
 
