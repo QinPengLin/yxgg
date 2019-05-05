@@ -9,6 +9,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\widgets\LinkPager;
 use yii\helpers\Url;
+use common\helps\PublicMethods;
 $this->title = $data['notice_title'];
 ?>
 <article>
@@ -30,10 +31,10 @@ $this->title = $data['notice_title'];
                 <p><a style="text-decoration: none;" target="_blank" href="<?php echo $data['notice_url']; ?>"><span class="diggit">阅读原文</span></a></p>
                 <div class="nextinfo">
                     <?php if(!empty($next)){ ?>
-                    <p>下一篇：<a href="/index.php?r=notice%2Findex&id=<?php echo $next['id']; ?>"><?php echo $next['notice_title']; ?></a></p>
+                    <p>下一篇：<a href="/index.php?r=notice%2Findex&id=<?php echo PublicMethods::encryption($next['id']); ?>"><?php echo $next['notice_title']; ?></a></p>
                     <?php } ?>
                     <?php if(!empty($up)){ ?>
-                    <p>上一篇：<a href="/index.php?r=notice%2Findex&id=<?php echo $up['id']; ?>"><?php echo $up['notice_title']; ?></a></p>
+                    <p>上一篇：<a href="/index.php?r=notice%2Findex&id=<?php echo PublicMethods::encryption($up['id']); ?>"><?php echo $up['notice_title']; ?></a></p>
                     <?php } ?>
                 </div>
             </div>
