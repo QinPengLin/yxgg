@@ -15,7 +15,10 @@ $this->title = $data['notice_title'];
     <!--lbox begin-->
     <div class="lbox">
         <div class="content_box whitebg">
-            <h2 class="htitle"><span class="con_nav"><a href="/">首页</a>><a href="#"><?php echo $data['game_company']; ?></a>><a href="#"><?php echo $data['game_name']; ?></a></span><?php echo $data['game_name']; ?></h2>
+            <h2 class="htitle"><span class="con_nav"><a href="/">首页</a>>
+                    <a href="/index.php?r=notice%2Flistcolumn&lumn_type=<?php echo Yii::$app->view->params['column'][$data['game_company']]['mark'] ?>"><?php echo $data['game_company']; ?></a>>
+                    <a href="/index.php?r=notice%2Flist&game_name_type=<?php echo $data['game_name_type']; ?>"><?php echo $data['game_name']; ?></a>
+                </span><?php echo $data['game_name']; ?></h2>
             <h1 class="con_tilte"><?php echo $data['notice_title']; ?></h1>
             <p class="bloginfo"><span><?php echo $data['game_name']; ?></span><span><?php echo $data['notice_time']; ?></span></p>
             <p class="con_info"><b>申明：</b>本站只是游戏公告的搬运工，不对公告做任何解释。</p>
