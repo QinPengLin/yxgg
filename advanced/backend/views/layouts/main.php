@@ -23,6 +23,15 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="/yxgg/css/base.css" rel="stylesheet">
     <link href="/yxgg/css/m.css" rel="stylesheet">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?a121a80d02070c80005e5c18ca607f2c";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
     <script src="/yxgg/js/jquery-1.8.3.min.js" ></script>
     <script src="/yxgg/js/comm.js"></script>
     <!--[if lt IE 9]>
@@ -85,15 +94,13 @@ AppAsset::register($this);
     <div class="box">
         <div class="wxbox">
             <ul>
-<!--                <li><img src="/yxgg/images/wxgzh.jpg"><span>微信公众号</span></li>-->
-<!--                <li><img src="/yxgg/images/wx.png"><span>我的微信</span></li>-->
+                <li><img src="/yxgg/images/wx.jpg"><span>我的微信</span></li>
             </ul>
         </div>
         <div class="endnav">
-<!--            <p><b>站点声明：</b></p>-->
-<!--            <p>1、本站个人博客模板，均为杨青青本人设计，个人可以使用，但是未经许可不得用于任何商业目的。</p>-->
-<!--            <p>2、所有文章未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任。举报邮箱：<a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HHh9cn95b3F1cHVye1xtbTJ-c3E" target="_blank">dacesmiling@qq.com</a></p>-->
-<!--            <p>Copyright © <a href="http://www.yangqq.com" target="_blank">www.yangqq.com</a> All Rights Reserved. 备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>-->
+            <p><b>站点声明：</b></p>
+            <p>本站只是游戏公告的搬运工，不对公告做任何解释。</p>
+            <p>Copyright © <a href="http://ggj.qinpl.cn" target="_blank">ggj.qinpl.cn</a> All Rights Reserved. 备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备17013559号-1</a></p>
         </div>
     </div>
     <a href="#">

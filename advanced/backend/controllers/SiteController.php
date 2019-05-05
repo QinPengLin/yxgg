@@ -27,6 +27,7 @@ class SiteController extends Controller
            ->asArray()
            ->all();
        $this->ranking=$list;
+       Yii::$app->view->params['articleCounts']=$noticeModel->count();;//文章总数
    }
 
     /**

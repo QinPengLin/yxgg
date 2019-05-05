@@ -55,7 +55,7 @@ $this->title = $game_name;
         <div class="whitebg paihang">
             <h2 class="htitle">点击排行</h2>
             <section class="topnews imgscale">
-                <a href="#"><img src="/yxgg/images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a>
+                <a href="#"><img src="/yxgg/images/h1.jpg"><span>热点关注</span></a>
             </section>
             <ul>
                 <?php foreach ($ranking as $v){ ?>
@@ -84,12 +84,10 @@ $this->title = $game_name;
         <div class="whitebg tongji">
             <h2 class="htitle">站点信息</h2>
             <ul>
-                <li><b>建站时间</b>：2018-10-24</li>
-<!--                <li><b>网站程序</b>：帝国cms</li>-->
-<!--                <li><b>主题模板</b>：<a href="http://www.yangqq.com" target="_blank">《今夕何夕》</a></li>-->
-<!--                <li><b>文章统计</b>：299条</li>-->
-<!--                <li><b>文章评论</b>：490条</li>-->
-<!--                <li><b>统计数据</b>：<a href="/">百度统计</a></li>-->
+                <li><b>建站时间</b>：2019-04-27</li>
+                <li><b>网站框架</b>：Yii 2.0</li>
+                <li><b>公告统计</b>：<?php echo Yii::$app->view->params['articleCounts']; ?>条</li>
+                <li><b>站长QQ</b>：1017962047</li>
             </ul>
         </div>
     </div>
