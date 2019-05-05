@@ -20,7 +20,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <meta name="keywords" content="blog" />
     <meta name="description" content="blog" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="/yxgg/css/base.css" rel="stylesheet">
     <link href="/yxgg/css/m.css" rel="stylesheet">
     <script src="/yxgg/js/jquery-1.8.3.min.js" ></script>
