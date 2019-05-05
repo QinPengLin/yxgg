@@ -27,7 +27,14 @@ class SiteController extends Controller
            ->asArray()
            ->all();
        $this->ranking=$list;
-       Yii::$app->view->params['articleCounts']=$noticeModel->count();;//文章总数
+       Yii::$app->view->params['articleCounts']=$noticeModel->count();//文章总数
+       Yii::$app->view->params['adminQq']=Yii::$app->params['publicConfig']['adminQq'];//管理员QQ
+       $sql='select notice_url,game_name_type,id,game_name from notice_info as a where creation_time = (select max(b.creation_time) from notice_info as b where a.game_name_type = b.game_name_type )';
+       $data=Yii::$app->db->createCommand($sql)->queryAll();
+       shuffle($data);//随机打乱数组
+       count($data)==0?$c_l=1:$c_l=count($data);
+       $data=array_slice($data,0,rand(1, $c_l));
+       Yii::$app->view->params['laha']=$data;//文章总数
    }
 
     /**

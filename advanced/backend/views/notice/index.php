@@ -58,15 +58,9 @@ $this->title = $data['notice_title'];
         <div class="whitebg cloud">
             <h2 class="htitle">标签云</h2>
             <ul>
-                <a href="" target="_blank">个人博客</a>
-                <a href="" target="_blank">css动画</a>
-                <a href="" target="_blank">布局</a>
-                <a href="" target="_blank">今夕何夕</a>
-                <a href="" target="_blank">SEO</a>
-                <a href="" target="_blank">程序员</a>
-                <a href="" target="_blank">小世界</a>
-                <a href="" target="_blank">个人博客</a>
-                <a href="" target="_blank">网页设计</a>
+                <?php foreach (Yii::$app->view->params['laha'] as $v){ ?>
+                <a href="/index.php?r=notice%2Findex&id=<?php echo $v['id']; ?>" target="_blank"><?php echo $v['game_name']; ?></a>
+                <?php } ?>
             </ul>
         </div>
 
@@ -77,7 +71,7 @@ $this->title = $data['notice_title'];
                 <li><b>建站时间</b>：2019-04-27</li>
                 <li><b>网站框架</b>：Yii 2.0</li>
                 <li><b>公告统计</b>：<?php echo Yii::$app->view->params['articleCounts']; ?>条</li>
-                <li><b>站长QQ</b>：1017962047</li>
+                <li><b>站长QQ</b>：<?php echo Yii::$app->view->params['adminQq']; ?></li>
             </ul>
         </div>
 

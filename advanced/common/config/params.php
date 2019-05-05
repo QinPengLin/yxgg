@@ -18,5 +18,6 @@ return [
         ),
         'siteName'=>'公告集',
         'adminListPag'=>10,
+        'adminQq'=>'1017962047',
     ),
 ];
