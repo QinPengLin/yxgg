@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\helps\PublicMethods;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -26,6 +27,10 @@ class SiteController extends Controller
            ->limit(10)
            ->asArray()
            ->all();
+       foreach ($list as $k=>$v){//ID加密
+           $list[$k]=$v;
+           $list[$k]['id']=PublicMethods::encryption($v['id']);
+       }
        $this->ranking=$list;
        Yii::$app->view->params['articleCounts']=$noticeModel->count();//文章总数
        Yii::$app->view->params['adminQq']=Yii::$app->params['publicConfig']['adminQq'];//管理员QQ
@@ -34,6 +39,10 @@ class SiteController extends Controller
        shuffle($data);//随机打乱数组
        count($data)==0?$c_l=1:$c_l=count($data);
        $data=array_slice($data,0,rand(1, $c_l));
+       foreach ($data as $k=>$v){//ID加密
+           $data[$k]=$v;
+           $data[$k]['id']=PublicMethods::encryption($v['id']);
+       }
        Yii::$app->view->params['laha']=$data;//文章总数
    }
 

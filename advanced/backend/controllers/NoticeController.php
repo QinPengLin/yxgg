@@ -8,6 +8,7 @@
 
 namespace backend\controllers;
 
+use common\helps\PublicMethods;
 use Yii;
 use backend\models\NoticeInfo;
 use yii\data\Pagination;
@@ -24,6 +25,10 @@ class NoticeController extends SiteController
     public function actionIndex(){
         if(Yii::$app->request->isGet) {
             $id = Yii::$app->request->get('id');
+            $id =PublicMethods::decryption($id);
+            if(!$id){
+                return $this->render('myerror', ['msg' => '参数不合法！']);
+            }
             $noticeModel=NoticeInfo::find();
             $data=$noticeModel->where(['id'=>$id])->one();
             if ($data) {
@@ -99,6 +104,10 @@ class NoticeController extends SiteController
 
             $sql="select notice_title,id,game_name,notice_url,notice_time from notice_info where id in(select max(id) from notice_info group by game_name) and game_company='".$column_name."'";
             $data=Yii::$app->db->createCommand($sql)->queryAll();//game_company下面每种游戏最新的公告
+            foreach ($data as $k=>$v){//ID加密
+                $data[$k]=$v;
+                $data[$k]['id']=PublicMethods::encryption($v['id']);
+            }
 
 
             return $this->render('listcolumn', ['data'=>$data,'column_name'=>$column_name,'ranking'=>$this->ranking]);
@@ -147,6 +156,10 @@ class NoticeController extends SiteController
                 ->offset($pageObj->offset)->orderBy('creation_time desc')
                 ->limit($pageObj->limit)
                 ->all();
+            foreach ($list as $k=>$v){//ID加密
+                $list[$k]=$v;
+                $list[$k]['id']=PublicMethods::encryption($v['id']);
+            }
 
             return $this->render('list', ['game_name'=>$game_name,'data'=>$list,'sun'=>$totalSize,'pagebar'=>$pageObj,'ranking'=>$this->ranking]);
         }
