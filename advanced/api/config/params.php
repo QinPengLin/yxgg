@@ -7,5 +7,31 @@ return [
             'wy_stzb'=>'率土之滨',
             'qq_pvp'=>'王者荣耀',
         ],
+        'NoticeList'=>[
+            'qq_pg'=>[
+                'href'=>'https://pg.qq.com/gicp/news/101/2/2003/1.html',
+                'company_name'=>'腾讯',
+                'name'=>'刺激战场',
+                'port_type'=>'wap',
+                'state'=>1,//1表示开启抓取
+                'text'=>'0'
+            ],
+            'wy_stzb'=>[
+                'href'=>'http://stzb.163.com/notice/',
+                'company_name'=>'网易',
+                'name'=>'率土之滨',
+                'port_type'=>'wap',
+                'state'=>1,//1表示开启抓取
+                'text'=>'1'//列表叶是否使用text
+            ],
+            'qq_pvp'=>[
+                'href'=>'https://pvp.qq.com/webplat/info/news_version3/15592/24091/24092/24095/m15240/list_1.shtml',
+                'company_name'=>'腾讯',
+                'name'=>'王者荣耀',
+                'port_type'=>'wap',
+                'state'=>1,//1表示开启抓取
+                'text'=>'0'
+            ]
+        ]
     )
 ];

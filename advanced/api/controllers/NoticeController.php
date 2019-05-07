@@ -75,4 +75,14 @@ class NoticeController extends SiteController
         }
         return json_encode($re_data);
     }
+    public function actionNoticelist(){
+        $re_data=array();
+        foreach (Yii::$app->params['apiConfig']['NoticeList'] as $k=>$v){
+            if ($v['state']==1){
+                unset($v['state']);
+                $re_data[$k]=$v;
+            }
+        }
+        return json_encode($re_data);
+    }
 }
