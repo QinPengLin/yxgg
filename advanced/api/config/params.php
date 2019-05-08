@@ -6,6 +6,7 @@ return [
             'qq_pg'=>'刺激战场',
             'wy_stzb'=>'率土之滨',
             'qq_pvp'=>'王者荣耀',
+            'qq_gp'=>'和平精英',
         ],
         'NoticeList'=>[
             'qq_pg'=>[
@@ -14,7 +15,8 @@ return [
                 'name'=>'刺激战场',
                 'port_type'=>'wap',
                 'state'=>1,//1表示开启抓取
-                'text'=>'0'
+                'text'=>'0',
+                'json'=>'0'//是否是抓取json接口数据
             ],
             'wy_stzb'=>[
                 'href'=>'http://stzb.163.com/notice/',
@@ -22,7 +24,8 @@ return [
                 'name'=>'率土之滨',
                 'port_type'=>'wap',
                 'state'=>1,//1表示开启抓取
-                'text'=>'1'//列表叶是否使用text
+                'text'=>'1',//列表叶是否使用text
+                'json'=>'0'
             ],
             'qq_pvp'=>[
                 'href'=>'https://pvp.qq.com/webplat/info/news_version3/15592/24091/24092/24095/m15240/list_1.shtml',
@@ -30,7 +33,19 @@ return [
                 'name'=>'王者荣耀',
                 'port_type'=>'wap',
                 'state'=>1,//1表示开启抓取
-                'text'=>'0'
+                'text'=>'0',
+                'json'=>'0'
+            ],
+            'qq_gp'=>[
+                'href'=>'https://apps.game.qq.com/wmp/v3.1/?p0=182&p1=searchNewsKeywordsList&page=1&pagesize=10&order=sIdxTime&r0=script&type=iTarget&id=3996&source=web_pc&r1=NewsObj',
+                'company_name'=>'腾讯',
+                'name'=>'和平精英',
+                'port_type'=>'wap',
+                'state'=>1,//1表示开启抓取
+                'text'=>'0',
+                'detail_new_json_url'=>'https://apps.game.qq.com/wmp/v3.1/public/searchNews.php?p0=182&source=web_pc&id=',//内容接口地址
+                'detail_new_url'=>'https://gp.qq.com/web20190423/detail_news.html?newsid=',//和平精英内容地址
+                'json'=>'1'
             ]
         ]
     )
