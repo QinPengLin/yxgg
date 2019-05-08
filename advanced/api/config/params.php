@@ -32,7 +32,7 @@ return [
                 'company_name'=>'腾讯',
                 'name'=>'王者荣耀',
                 'port_type'=>'wap',
-                'state'=>0,//1表示开启抓取
+                'state'=>1,//1表示开启抓取
                 'text'=>'0',
                 'json'=>'0'
             ],
