@@ -23,7 +23,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['error','noticelist'],
+                        'actions' => ['error','noticelist','getmenu'],
                         'allow' => true,
                     ],
                     [
@@ -38,6 +38,7 @@ class SiteController extends Controller
                 'actions' => [
                     'logout' => ['post'],
                     'apiadd' => ['post'],
+                    'getmenu' => ['post'],
                 ],
             ],
         ];

@@ -23,4 +23,9 @@ class NoticeController extends SiteController
         $re_data=array('测试','测试二');
         return json_encode($re_data);
     }
+    public function actionGetmenu(){//小程序获取菜单
+        $menus=Yii::$app->view->params['column']=Yii::$app->params['publicConfig']['column'];
+
+        return json_encode($menus);
+    }
 }

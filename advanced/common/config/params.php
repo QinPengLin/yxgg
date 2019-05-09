@@ -16,6 +16,9 @@ return [
             '网易'=>array('mark'=>'wy','child'=>array(
                 array('name'=>'率土之滨','mark'=>'wy_stzb'),
             )),
+//            '简介'=>array('mark'=>'jj','child'=>false,
+//            ),
+
         ),
         'siteName'=>'公告集',
         'adminListPag'=>10,
