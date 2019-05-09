@@ -67,11 +67,18 @@ class NoticeController extends SiteController
         return  $_SERVER['SERVER_NAME'].'/'.$file_data;
     }
     public function actionNewnotice(){
-        $sql='select notice_url,game_name_type,id,game_name from notice_info as a where creation_time = (select max(b.creation_time) from notice_info as b where a.game_name_type = b.game_name_type )';
+        //获取以game_name_type分组创建时间比每组创建最大时间少86400的数据
+        //$sql='select notice_url,game_name_type,id,game_name from notice_info as a where creation_time > ((select max(b.creation_time) from notice_info as b where a.game_name_type = b.game_name_type )-86400)';
+        //获取以game_name_type分组创建时间最晚的前10的数据并且以creation_time排序
+        $sql='select notice_url,game_name_type,id,game_name from notice_info a where 50 > (select count(*) from notice_info where game_name_type = a.game_name_type and creation_time > a.creation_time ) order by  a.creation_time desc';
         $data=Yii::$app->db->createCommand($sql)->queryAll();
         $re_data=array();
         foreach ($data as $k=>$v){
-            $re_data[$v['game_name_type']]=array('href'=>$v['notice_url']);
+            $re_data[$v['game_name_type']][]=array(
+                'href'=>$v['notice_url']
+                //'id'=>$v['id'],
+                //'game_name_type'=>$v['game_name_type']
+            );
         }
         return json_encode($re_data);
     }
