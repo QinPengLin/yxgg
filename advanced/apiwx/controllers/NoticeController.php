@@ -33,6 +33,7 @@ class NoticeController extends SiteController
         $id=Yii::$app->request->post('id');
         $noticeModel=NoticeInfo::find();
         $data=$noticeModel->where(['id'=>$id])->asArray()->one();
+        $data['notice_content']=html_entity_decode($data['notice_content']);
         //print_r($data);
         return json_encode($data);
     }
