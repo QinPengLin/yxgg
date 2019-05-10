@@ -28,6 +28,14 @@ class NoticeController extends SiteController
 
         return json_encode($menus);
     }
+    public function actionGetcontent()
+    {//小程序获取内容页
+        $id=Yii::$app->request->post('id');
+        $noticeModel=NoticeInfo::find();
+        $data=$noticeModel->where(['id'=>$id])->asArray()->one();
+        //print_r($data);
+        return json_encode($data);
+    }
     public function actionGetindexlist()
     {//小程序获取首页内容列表
        //实例化模型
@@ -62,12 +70,18 @@ class NoticeController extends SiteController
             'id',
             'game_company',
             'game_name',
+            'game_name_type',
             'notice_url',
             'notice_time'])
             ->offset($totalSize)->orderBy('id desc')
             ->limit($Size)
             ->asArray()
             ->all();
+        $c=Yii::$app->view->params['column']=Yii::$app->params['publicConfig']['column'];
+        foreach ($list as $k=>$v){
+            $list[$k]=$v;
+            $list[$k]['mark']=$c[$v['game_company']]['mark'];
+        }
         $re=array(
             'list'=>$list,
             'page'=>array(
