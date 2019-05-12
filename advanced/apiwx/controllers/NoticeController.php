@@ -101,7 +101,7 @@ class NoticeController extends SiteController
                 'game_name_type',
                 'notice_url',
                 'notice_time'])
-                ->where(['game_name_type',$type])
+                ->where(['game_name_type'=>$type])
                 ->offset($totalSize)->orderBy('id desc')
                 ->limit($Size)
                 ->asArray()
