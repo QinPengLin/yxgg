@@ -36,7 +36,7 @@ class NoticeController extends SiteController
         $data=$noticeModel->where(['id'=>$id])->asArray()->one();
         if ($data) {
             $datas=$noticeModel->where(['id'=>$id])->one();
-            print_r($datas);
+            print_r($datas->wx_watch_number);
 //            $datas->wx_watch_number = $data['wx_watch_number'] + 1;
 //            $datas->save();
         }
