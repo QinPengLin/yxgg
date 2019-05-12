@@ -47,6 +47,7 @@ class NoticeController extends SiteController
         if(!empty($type) && $type=='wxxcxjj'){//获取小程序简介
             $list = Log::find()
                 ->Where(['type'=>'wxxcxjj'])
+                ->orderBy('id desc')
                 ->asArray()
                 ->one();
             $list['time']=date("Y-m-d H:i:s",$list['time']);
@@ -54,6 +55,7 @@ class NoticeController extends SiteController
             $list = Log::find()
                 ->Where(['type'=>'wxx'])
                 ->orWhere(['type' => 'all'])
+                ->orderBy('id desc')
                 ->asArray()
                 ->all();
             foreach ($list as $k=>$v){
