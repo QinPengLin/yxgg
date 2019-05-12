@@ -57,7 +57,33 @@ class NoticeController extends SiteController
             $sp=1;
             $s=$pg-1;
         }
-        $count=$noticeModel->count();
+        $type=Yii::$app->request->post('type');
+        $is_type=false;
+        if (isset($type) && !empty($type)) {
+           $column= Yii::$app->params['publicConfig']['column'];
+           foreach ($column as $v){
+               if (!empty($v['child'])){
+                   foreach ($v['child'] as $vs){
+                       if ($vs['mark']==$type){
+                           $is_type=true;
+                           break;
+                       }
+                   }
+               }
+               if ($is_type){
+                   break;
+               }
+           }
+           if ($is_type){
+               $count = $noticeModel
+                   ->where(['game_name_type',$type])
+                   ->count();
+           }else{
+               return json_encode('参数不合法！');
+           }
+        }else{
+            $count = $noticeModel->count();
+        }
         $s_page=$count/$Size;
         if ($pg+1>$s_page || $pg+1==$s_page){
             $x=false;
@@ -65,19 +91,35 @@ class NoticeController extends SiteController
             $x=$pg+1;
         }
 
-        //查询本页数据
-        $list = $noticeModel->select([
-            'notice_title',
-            'id',
-            'game_company',
-            'game_name',
-            'game_name_type',
-            'notice_url',
-            'notice_time'])
-            ->offset($totalSize)->orderBy('id desc')
-            ->limit($Size)
-            ->asArray()
-            ->all();
+        if($is_type) {
+            //查询本页数据
+            $list = $noticeModel->select([
+                'notice_title',
+                'id',
+                'game_company',
+                'game_name',
+                'game_name_type',
+                'notice_url',
+                'notice_time'])
+                ->where(['game_name_type',$type])
+                ->offset($totalSize)->orderBy('id desc')
+                ->limit($Size)
+                ->asArray()
+                ->all();
+        }else{
+            $list = $noticeModel->select([
+                'notice_title',
+                'id',
+                'game_company',
+                'game_name',
+                'game_name_type',
+                'notice_url',
+                'notice_time'])
+                ->offset($totalSize)->orderBy('id desc')
+                ->limit($Size)
+                ->asArray()
+                ->all();
+        }
         $c=Yii::$app->view->params['column']=Yii::$app->params['publicConfig']['column'];
         foreach ($list as $k=>$v){
             $list[$k]=$v;
