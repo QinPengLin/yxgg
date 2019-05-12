@@ -7,6 +7,7 @@
  */
 namespace apiwx\controllers;
 
+use apiwx\models\Log;
 use Yii;
 use apiwx\web\Tools\Msg;
 use apiwx\web\Tools\Zil;
@@ -33,9 +34,20 @@ class NoticeController extends SiteController
         $id=Yii::$app->request->post('id');
         $noticeModel=NoticeInfo::find();
         $data=$noticeModel->where(['id'=>$id])->asArray()->one();
+        if ($data) {
+            $data->wx_watch_number = $data['wx_watch_number'] + 1;
+            $data->save();
+        }
         $data['notice_content']=html_entity_decode($data['notice_content']);
         //print_r($data);
         return json_encode($data);
+    }
+    public function actionGetlog(){//获取更新日志
+        $list = Log::where(['type'=>'wxx'])
+            ->addWhere(['or',['=','type','all']])
+            ->asArray()
+            ->all();
+        return json_encode($list);
     }
     public function actionGetindexlist()
     {//小程序获取首页内容列表
