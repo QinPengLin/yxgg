@@ -39,7 +39,7 @@ class NoticeController extends SiteController
             $data->save();
         }
         $data['notice_content']=html_entity_decode($data['notice_content']);
-        //print_r($data);
+        print_r($data);
         return json_encode($data);
     }
     public function actionGetlog(){//获取更新日志
