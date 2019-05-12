@@ -43,11 +43,20 @@ class NoticeController extends SiteController
         return json_encode($data);
     }
     public function actionGetlog(){//获取更新日志
-        $list = Log::find()
-            ->Where(['type'=>'wxx'])
-            ->orWhere(['type' => 'all'])
-            ->asArray()
-            ->all();
+        $type=Yii::$app->request->post('type');
+        if(!empty($type) && $type=='wxxcxjj'){//获取小程序简介
+            $list = Log::find()
+                ->Where(['type'=>'wxxcxjj'])
+                ->asArray()
+                ->one();
+        }else{
+            $list = Log::find()
+                ->Where(['type'=>'wxx'])
+                ->orWhere(['type' => 'all'])
+                ->asArray()
+                ->all();
+        }
+
         return json_encode($list);
     }
     public function actionGetindexlist()
