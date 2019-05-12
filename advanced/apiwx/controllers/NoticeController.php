@@ -44,7 +44,8 @@ class NoticeController extends SiteController
     }
     public function actionGetlog(){//获取更新日志
         $list = Log::find()
-            ->addWhere(['or',['=','type','all'],['=','type','wxx']])
+            ->Where(['type'=>'wxx'])
+            ->andWhere(['or',['type' => 'all']])
             ->asArray()
             ->all();
         return json_encode($list);
