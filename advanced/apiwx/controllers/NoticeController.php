@@ -35,8 +35,9 @@ class NoticeController extends SiteController
         $noticeModel=NoticeInfo::find();
         $data=$noticeModel->where(['id'=>$id])->asArray()->one();
         if ($data) {
-            $data->wx_watch_number = $data['wx_watch_number'] + 1;
-            $data->save();
+            $datas=$noticeModel->where(['id'=>$id])->one();
+            $datas->wx_watch_number = $data['wx_watch_number'] + 1;
+            $datas->save();
         }
         $data['notice_content']=html_entity_decode($data['notice_content']);
         //print_r($data);
