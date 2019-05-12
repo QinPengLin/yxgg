@@ -33,12 +33,10 @@ class NoticeController extends SiteController
     {//小程序获取内容页
         $id=Yii::$app->request->post('id');
         $noticeModel=NoticeInfo::find();
-        $data=$noticeModel->where(['id'=>$id])->asArray()->one();
+        $data=$noticeModel->where(['id'=>$id])->one();
         if ($data) {
-            $datas=$noticeModel->where(['id'=>$id])->one();
-            print_r($datas->wx_watch_number);
-//            $datas->wx_watch_number = $data['wx_watch_number'] + 1;
-//            $datas->save();
+            $data->wx_watch_number = $data['wx_watch_number'] + 1;
+            $data->save();
         }
         $data['notice_content']=html_entity_decode($data['notice_content']);
         //print_r($data);
