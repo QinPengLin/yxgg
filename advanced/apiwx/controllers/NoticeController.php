@@ -76,7 +76,7 @@ class NoticeController extends SiteController
            }
            if ($is_type){
                $count = $noticeModel
-                   ->where(['game_name_type',$type])
+                   ->where('game_name_type',$type)
                    ->count();
            }else{
                return json_encode('参数不合法！');
