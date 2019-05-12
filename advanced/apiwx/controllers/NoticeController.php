@@ -43,8 +43,8 @@ class NoticeController extends SiteController
         return json_encode($data);
     }
     public function actionGetlog(){//获取更新日志
-        $list = Log::find()->where(['type'=>'wxx'])
-            ->addWhere(['or',['=','type','all']])
+        $list = Log::find()
+            ->addWhere(['or',['=','type','all'],['=','type','wxx']])
             ->asArray()
             ->all();
         return json_encode($list);
