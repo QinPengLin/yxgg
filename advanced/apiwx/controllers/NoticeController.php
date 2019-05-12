@@ -49,12 +49,17 @@ class NoticeController extends SiteController
                 ->Where(['type'=>'wxxcxjj'])
                 ->asArray()
                 ->one();
+            $list['time']=date("Y-m-d H:i:s",$list['time']);
         }else{
             $list = Log::find()
                 ->Where(['type'=>'wxx'])
                 ->orWhere(['type' => 'all'])
                 ->asArray()
                 ->all();
+            foreach ($list as $k=>$v){
+                $list[$k]=$v;
+                $list[$k]['time']=date("Y-m-d H:i:s",$v['time']);
+            }
         }
 
         return json_encode($list);
