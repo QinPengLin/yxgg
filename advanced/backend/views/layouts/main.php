@@ -86,6 +86,7 @@ AppAsset::register($this);
         <div class="wxbox">
             <ul>
                 <li><img src="/yxgg/images/wx.jpg"><span>我的微信</span></li>
+                <li><img src="/yxgg/images/xcx.jpg"><span>小程序</span></li>
             </ul>
         </div>
         <div class="endnav">
