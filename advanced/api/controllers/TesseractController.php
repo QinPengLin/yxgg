@@ -21,13 +21,13 @@ class TesseractController extends SiteController
     public $enableCsrfValidation = false;
 
     public function actionIdentify(){
-
-        if(!Yii::$app->request->isPost)return Msg::message([], -4, "非法提交!");
+        $err=array('错误');
+        if(!Yii::$app->request->isPost)return Msg::message($err, -4, "非法提交!");
         $data=Yii::$app->request->post();
 
 
         if (!isset($_FILES["img"]) || empty($_FILES["img"])){
-            return Msg::message(['图片上传不能为空!'], -4, "图片上传不能为空!");
+            return Msg::message($err, -4, "图片上传不能为空!");
         }
 
         list($msec, $sec) = explode(' ', microtime());
