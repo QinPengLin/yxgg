@@ -41,8 +41,8 @@ class TesseractController extends SiteController
         passthru("tesseract ".$path.$filename." ".$txt_path.$msectime."  -l chi_sim");
         $code = file_get_contents($txt_path.$msectime.".txt");
         //删除文件
-        //unlink( $path.$filename);
-        //unlink( $txt_path.$msectime.".txt" );
+        unlink( $path.$filename);
+        unlink( $txt_path.$msectime.".txt" );
 
         print_r($code);
     }
