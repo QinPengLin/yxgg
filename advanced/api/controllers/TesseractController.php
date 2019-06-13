@@ -114,9 +114,10 @@ class TesseractController extends SiteController
             if (file_exists($path.$filename)){
                 unlink( $path.$filename);
             }
-            $arr = json_decode($re,true);
-            $reStr=JsonFormat::jsonFormat($arr);
-            return $this->render('demo', ['msg' => '演示','re' => $reStr]);
+            print_r($re);
+//            $arr = json_decode($re,true);
+//            $reStr=JsonFormat::jsonFormat($arr);
+//            return $this->render('demo', ['msg' => '演示','re' => $reStr]);
 
 
         }
