@@ -115,9 +115,13 @@ class TesseractController extends SiteController
                 unlink( $path.$filename);
             }
             print_r($re);
-//            $arr = json_decode($re,true);
-//            $reStr=JsonFormat::jsonFormat($arr);
-//            return $this->render('demo', ['msg' => '演示','re' => $reStr]);
+            if (!isset($re) || empty($re)){
+                $arr=array('错误','查看参数是否齐全');
+            }else {
+                $arr = json_decode($re, true);
+            }
+            $reStr=JsonFormat::jsonFormat($arr);
+            return $this->render('demo', ['msg' => '演示','re' => $reStr]);
 
 
         }
