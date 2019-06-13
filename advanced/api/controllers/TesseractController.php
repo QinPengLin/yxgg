@@ -59,6 +59,7 @@ class TesseractController extends SiteController
         unlink( $path.$filename);
         unlink( $txt_path.$msectime.".txt" );
 
-        print_r($code);
+        return Msg::message($code, 1, "成功!");
+        
     }
 }
