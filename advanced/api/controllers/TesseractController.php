@@ -7,6 +7,7 @@
  */
 namespace api\controllers;
 
+use api\web\Tools\JsonFormat;
 use api\web\Tools\Request;
 use Yii;
 use api\web\Tools\Msg;
@@ -75,7 +76,6 @@ class TesseractController extends SiteController
 
     public function actionDemo(){
         if(!Yii::$app->request->isPost) {
-
             return $this->render('demo', ['msg' => '演示']);
         }else{
 
@@ -114,9 +114,9 @@ class TesseractController extends SiteController
             if (file_exists($path.$filename)){
                 unlink( $path.$filename);
             }
-            $re=preg_replace_callback("#\\\u([0-9a-f]{4})#ie", "iconv('UCS-2BE', 'UTF-8', pack('H4', '\\1'))", $re);
-
-            return $this->render('demo', ['msg' => '演示','re' => $re]);
+            $arr = json_decode($re,true);
+            $reStr=JsonFormat::jsonFormat($arr);
+            return $this->render('demo', ['msg' => '演示','re' => $reStr]);
 
 
         }
