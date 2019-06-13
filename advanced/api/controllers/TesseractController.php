@@ -22,6 +22,9 @@ class TesseractController extends SiteController
 
 
         $data=Yii::$app->request->post();
+        if (!isset($_FILES["img"]) || empty($_FILES["img"])){
+            return Msg::message([], -4, "图片上传不能为空!");
+        }
 
         list($msec, $sec) = explode(' ', microtime());
         $msectime = (float)sprintf('%.0f', (floatval($msec) + floatval($sec)) * 1000);
@@ -60,6 +63,6 @@ class TesseractController extends SiteController
         unlink( $txt_path.$msectime.".txt" );
 
         return Msg::message($code, 1, "成功!");
-        
+
     }
 }
