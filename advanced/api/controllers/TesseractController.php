@@ -23,9 +23,8 @@ class TesseractController extends SiteController
 
         if(!Yii::$app->request->isPost)return Msg::message([], -4, "非法提交!");
         $data=Yii::$app->request->post();
-        print_r($data);
-        print_r($_FILES);
-        exit();
+        return Msg::message([$data,$_FILES], -4, "图片上传不能为空!");
+        
         if (!isset($_FILES["img"]) || empty($_FILES["img"])){
             return Msg::message([], -4, "图片上传不能为空!");
         }
