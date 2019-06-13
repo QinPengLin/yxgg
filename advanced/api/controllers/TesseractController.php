@@ -75,7 +75,7 @@ class TesseractController extends SiteController
 
     public function actionDemo(){
         if(!Yii::$app->request->isPost) {
-            //return Msg::message([], 1, "成功!");
+
             return $this->render('demo', ['msg' => '演示']);
         }else{
 
@@ -115,9 +115,9 @@ class TesseractController extends SiteController
                 unlink( $path.$filename);
             }
 
+            return $this->render('demo', ['re' => $re]);
 
 
-            print_r($re);
         }
     }
 }
