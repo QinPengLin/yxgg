@@ -10,11 +10,21 @@ $this->title = $msg;
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!000000</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <form role="form" enctype="multipart/form-data" method="post"  action="">
+            <div class="form-group">
+                <label for="name">字体库</label>
+                <input type="text" class="form-control" name="ztk" placeholder="字体库">
+            </div>
+            <div class="form-group">
+                <label for="inputfile">文件输入</label>
+                <input type="file" name="img">
+                <p class="help-block">上传需要识别的图片</p>
+            </div>
+            <button type="submit" class="btn btn-default">提交</button>
+        </form>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+
     </div>
 
     <div class="body-content">
@@ -29,6 +39,7 @@ $this->title = $msg;
                     fugiat nulla pariatur.</p>
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+
             </div>
             <div class="col-lg-4">
                 <h2>Heading</h2>

@@ -19,7 +19,7 @@ class Request{
      * @return string 接口返回的内容，超时返回false
      */
     public static function curlRequest($url, $data=array(),$header=array(), $timeoutMs = 3000) {
-        $data=json_encode($data);
+        //$data=json_encode($data);
         $header_default=array([
             'User-Agent'=>'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240',
             'Accept'=>'text/html, application/xhtml+xml, image/jxr, */*',

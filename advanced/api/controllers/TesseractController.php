@@ -23,7 +23,7 @@ class TesseractController extends SiteController
 
         if(!Yii::$app->request->isPost)return Msg::message([], -4, "非法提交!");
         $data=Yii::$app->request->post();
-        //return Msg::message([$data,$_FILES], -4, "图片上传不能为空!");
+
 
         if (!isset($_FILES["img"]) || empty($_FILES["img"])){
             return Msg::message([], -4, "图片上传不能为空!");
@@ -62,8 +62,12 @@ class TesseractController extends SiteController
         }
         $code = file_get_contents($txt_path.$msectime.".txt");
         //删除文件
-        unlink( $path.$filename);
-        unlink( $txt_path.$msectime.".txt" );
+        if (file_exists($path.$filename)){
+            unlink( $path.$filename);
+        }
+        if (file_exists($txt_path.$msectime.".txt")){
+            unlink( $txt_path.$msectime.".txt");
+        }
 
         return Msg::message($code, 1, "成功!");
 
@@ -71,8 +75,8 @@ class TesseractController extends SiteController
 
     public function actionDemo(){
         if(!Yii::$app->request->isPost) {
-            return Msg::message([], 1, "成功!");
-            //return $this->render('demo', ['msg' => '演示']);
+            //return Msg::message([], 1, "成功!");
+            return $this->render('demo', ['msg' => '演示']);
         }else{
 
             $data=Yii::$app->request->post();
@@ -88,14 +92,28 @@ class TesseractController extends SiteController
             move_uploaded_file($_FILES["img"]["tmp_name"],$filename);
 
             $path=str_ireplace('controllers','web/',__DIR__);
+            try {
 
-            $file = array(
-                'img' => new \CURLFile(realpath($path.$filename))
-            );
 
-            $datas=array_merge($file, $data);
-            $re= Request::curlRequest('http://ggj.api.qinpl.cn/index.php?r=tesseract/identify', $datas);
+                $file = array(
+                    'img' => new \CURLFile(realpath($path.$filename))
+                );
 
+                $datas=array_merge($file, $data);
+                $re= Request::curlRequest('http://ggj.api.qinpl.cn/index.php?r=tesseract/identify', $datas);
+
+            } catch (Exception $e) {
+                if (file_exists($path.$filename)){
+                    unlink( $path.$filename);
+                }
+            } catch (Error $e) {
+                if (file_exists($path.$filename)){
+                    unlink( $path.$filename);
+                }
+            }
+            if (file_exists($path.$filename)){
+                unlink( $path.$filename);
+            }
 
 
 
