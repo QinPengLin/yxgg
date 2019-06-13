@@ -23,8 +23,8 @@ class TesseractController extends SiteController
 
         if(!Yii::$app->request->isPost)return Msg::message([], -4, "非法提交!");
         $data=Yii::$app->request->post();
-        return Msg::message([$data,$_FILES], -4, "图片上传不能为空!");
-        
+        //return Msg::message([$data,$_FILES], -4, "图片上传不能为空!");
+
         if (!isset($_FILES["img"]) || empty($_FILES["img"])){
             return Msg::message([], -4, "图片上传不能为空!");
         }
@@ -74,8 +74,7 @@ class TesseractController extends SiteController
             return Msg::message([], 1, "成功!");
             //return $this->render('demo', ['msg' => '演示']);
         }else{
-            //print_r($_FILES);
-            //exit();
+
             $data=Yii::$app->request->post();
 
             list($msec, $sec) = explode(' ', microtime());
@@ -90,13 +89,12 @@ class TesseractController extends SiteController
 
             $path=str_ireplace('controllers','web/',__DIR__);
 
-
             $file = array(
-
-                'img'=>"@".$path.$filename.";".$_FILES["img"]['type'].";".$msectime.'.'.$hz.""
+                'img' => new \CURLFile(realpath($path.$filename))
             );
+
             $datas=array_merge($file, $data);
-           $re= Request::curlRequest('http://ggj.api.qinpl.cn/index.php?r=tesseract/identify', $datas);
+            $re= Request::curlRequest('http://ggj.api.qinpl.cn/index.php?r=tesseract/identify', $datas);
 
 
 
