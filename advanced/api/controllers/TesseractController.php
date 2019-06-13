@@ -65,4 +65,8 @@ class TesseractController extends SiteController
         return Msg::message($code, 1, "成功!");
 
     }
+
+    public function actionDemo(){
+        return $this->render('demo', ['msg' => '演示']);
+    }
 }

@@ -23,7 +23,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['error','apiadd','up','newnotice','noticelist','identify'],
+                        'actions' => ['error','apiadd','up','newnotice','noticelist','identify','demo'],
                         'allow' => true,
                     ],
                     [
