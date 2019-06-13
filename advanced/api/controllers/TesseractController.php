@@ -114,6 +114,7 @@ class TesseractController extends SiteController
             if (file_exists($path.$filename)){
                 unlink( $path.$filename);
             }
+            $re=preg_replace("#\\\u([0-9a-f]{4})#ie", "iconv('UCS-2BE', 'UTF-8', pack('H4', '\\1'))", $re);
 
             return $this->render('demo', ['msg' => '演示','re' => $re]);
 
