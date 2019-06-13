@@ -27,7 +27,7 @@ class TesseractController extends SiteController
 
 
         if (!isset($_FILES["img"]) || empty($_FILES["img"])){
-            return Msg::message([], -4, "图片上传不能为空!");
+            return Msg::message(['图片上传不能为空!'], -4, "图片上传不能为空!");
         }
 
         list($msec, $sec) = explode(' ', microtime());
