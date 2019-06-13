@@ -115,7 +115,7 @@ class TesseractController extends SiteController
                 unlink( $path.$filename);
             }
 
-            return $this->render('demo', ['re' => $re]);
+            return $this->render('demo', ['msg' => '演示','re' => $re]);
 
 
         }
