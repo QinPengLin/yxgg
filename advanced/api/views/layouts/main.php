@@ -35,7 +35,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">访问人数<?php echo $ip; ?></p>
+        <p class="pull-left">访问人数<?php print_r($ip); ?></p>
     </div>
 </footer>
 

@@ -19,7 +19,7 @@ class WriteRecordTesseract
      */
     public static function Write()
     {
-      $ip=Yii::$app->request->userHostAddress;
+      $ip=Yii::$app->request;
       return $ip;
     }
 }
