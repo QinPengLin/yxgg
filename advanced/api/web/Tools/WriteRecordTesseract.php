@@ -9,15 +9,11 @@ namespace api\web\Tools;
 use api\models\RecordTesseract;
 use Yii;
 /**
- * post和get请求类
+ * 记录用户访问信息
  */
 class WriteRecordTesseract
 {
-    /** Json数据格式化
-     * @param  Mixed  $data   数据
-     * @param  String $indent 缩进字符，默认4个空格
-     * @return JSON
-     */
+    //记录用户访问信息
     public static function Write()
     {
         $ip=Yii::$app->request->userIP;
