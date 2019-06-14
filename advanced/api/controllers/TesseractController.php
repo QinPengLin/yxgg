@@ -7,6 +7,7 @@
  */
 namespace api\controllers;
 
+use api\models\RecordTesseract;
 use api\web\Tools\JsonFormat;
 use api\web\Tools\Request;
 use api\web\Tools\WriteRecordTesseract;
@@ -22,6 +23,7 @@ class TesseractController extends SiteController
     public $enableCsrfValidation = false;
 
     public function actionIdentify(){
+        WriteRecordTesseract::Write();
         $err=array('错误');
         if(!Yii::$app->request->isPost)return Msg::message($err, -4, "非法提交!");
         $data=Yii::$app->request->post();
@@ -76,11 +78,14 @@ class TesseractController extends SiteController
     }
 
     public function actionDemo(){
+        $count = RecordTesseract::
+        where(['controller'=>Yii::$app->controller->action->id])
+            ->count();
         if(!Yii::$app->request->isPost) {
-            $ip=WriteRecordTesseract::Write();
-            return $this->render('demo', ['msg' => '识别图像中文字','ip'=>$ip]);
+            WriteRecordTesseract::Write();
+            return $this->render('demo', ['msg' => '识别图像中文字','count'=>$count]);
         }else{
-
+            WriteRecordTesseract::Write();
             $data=Yii::$app->request->post();
 
             list($msec, $sec) = explode(' ', microtime());
@@ -123,7 +128,7 @@ class TesseractController extends SiteController
                 $arr = json_decode($re, true);
             }
             $reStr=JsonFormat::jsonFormat($arr);
-            return $this->render('demo', ['msg' => '识别图像中文字','re' => $reStr]);
+            return $this->render('demo', ['msg' => '识别图像中文字','re' => $reStr,'count'=>$count]);
 
 
         }
