@@ -145,3 +145,9 @@ $this->title = $msg;
 
     </div>
 </div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="pull-left">访问人数<?php print_r($ip); ?></p>
+    </div>
+</footer>
