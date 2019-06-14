@@ -20,7 +20,7 @@ class WriteRecordTesseract
     public static function Write()
     {
       //$ip=Yii::$app->request->userIP;
-        $ip=Yii::$app->getControllerPath();
+        $ip=Yii::$app->controller->action->id;
       return $ip;
     }
 }
