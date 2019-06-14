@@ -114,7 +114,7 @@ class TesseractController extends SiteController
             if (file_exists($path.$filename)){
                 unlink( $path.$filename);
             }
-           
+
             if (!isset($re) || empty($re)){
                 $arr=array('错误','查看参数是否齐全');
             }else {
