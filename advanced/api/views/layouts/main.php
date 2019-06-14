@@ -33,7 +33,11 @@ AppAsset::register($this);
     </div>
 </div>
 
-
+<footer class="footer">
+    <div class="container">
+        <p class="pull-left">友情链接：<a href="http://www.qinpl.cn/" target="_blank" >个人博客</a> | <a href="https://ggj.qinpl.cn/index.php?r=notice%2Flist&game_name_type=qq_pvp" target="_blank" >公告集</a></p>
+    </div>
+</footer>
 
 
 <?php $this->endBody() ?>
