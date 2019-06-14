@@ -9,6 +9,7 @@ namespace api\controllers;
 
 use api\web\Tools\JsonFormat;
 use api\web\Tools\Request;
+use api\web\Tools\WriteRecordTesseract;
 use Yii;
 use api\web\Tools\Msg;
 
@@ -76,7 +77,8 @@ class TesseractController extends SiteController
 
     public function actionDemo(){
         if(!Yii::$app->request->isPost) {
-            return $this->render('demo', ['msg' => '识别图像中文字']);
+            $ip=WriteRecordTesseract::Write();
+            return $this->render('demo', ['msg' => '识别图像中文字','ip'=>$ip]);
         }else{
 
             $data=Yii::$app->request->post();

@@ -33,8 +33,24 @@ AppAsset::register($this);
     </div>
 </div>
 
+<footer class="footer">
+    <div class="container">
+        <p class="pull-left">访问人数<?php echo $ip; ?></p>
+    </div>
+</footer>
+
 
 <?php $this->endBody() ?>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?50d4d5a462c3d21a202ba61889914780";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>
