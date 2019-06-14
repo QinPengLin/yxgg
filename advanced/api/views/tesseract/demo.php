@@ -86,7 +86,7 @@ $this->title = $msg;
                             </table>
                         </div>
                         <p> <strong>识别图片示例</strong></p>
-                        <img src="http://ggj.api.qinpl.cn/update/sample/sample.png">
+                        <img class="img-responsive" src="http://ggj.api.qinpl.cn/update/sample/sample.png">
 
                         <p> <strong>返回示例</strong></p>
                         <pre style="padding-left: 5px; background-color: rgb(252, 252, 252); border: 1px solid rgb(225, 225, 232);">
