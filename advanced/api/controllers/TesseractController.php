@@ -76,7 +76,7 @@ class TesseractController extends SiteController
 
     public function actionDemo(){
         if(!Yii::$app->request->isPost) {
-            return $this->render('demo', ['msg' => '演示']);
+            return $this->render('demo', ['msg' => '识别图像中文字']);
         }else{
 
             $data=Yii::$app->request->post();
@@ -121,7 +121,7 @@ class TesseractController extends SiteController
                 $arr = json_decode($re, true);
             }
             $reStr=JsonFormat::jsonFormat($arr);
-            return $this->render('demo', ['msg' => '演示','re' => $reStr]);
+            return $this->render('demo', ['msg' => '识别图像中文字','re' => $reStr]);
 
 
         }
