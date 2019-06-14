@@ -78,8 +78,9 @@ class TesseractController extends SiteController
     }
 
     public function actionDemo(){
-        $count = RecordTesseract::
-        where(['controller'=>Yii::$app->controller->action->id])
+        $RecordTesseract_m=new RecordTesseract();
+        $count = $RecordTesseract_m
+            ->where(['controller'=>Yii::$app->controller->action->id])
             ->count();
         if(!Yii::$app->request->isPost) {
             WriteRecordTesseract::Write();
